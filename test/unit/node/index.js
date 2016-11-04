@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 
-describe('require("html-dnd")', function() {
+describe('require("html-dnd-with-drag-over")', function() {
   it('should export a property "code" as string', function() {
     var dndSimulator = require('../../../lib/index.js');
 

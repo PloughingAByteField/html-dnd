@@ -10,6 +10,9 @@ This module can simulate the HTML Drag and Drop by using the [Execute Script com
 
 This module is like [rcorreia/drag_and_drop_helper.js](https://gist.github.com/rcorreia/2362544), but it does not require jQuery.
 
+This fork of [html-dnd](https://github.com/Kuniwak/html-dnd) simply adds a dragover event in front of the drop event to allow the [angular-drag-and-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) to work properly.
+This is due to angular-drag-and-drop-lists set index values via the drag over event, if the drag over event is not run then the drop will not correctly calculate the index of the drop point.
+
 
 Install
 -------
