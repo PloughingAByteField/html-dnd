@@ -1,7 +1,7 @@
 {
-  "name": "html-dnd-with-drag-over",
+  "name": "html-dnd",
   "version": "1.1.0",
-  "description": "HTML Drag and Drop Simulator for E2E testing, drag over event fired before drop",
+  "description": "HTML Drag and Drop Simulator for E2E testing",
   "keywords": [
     "drag",
     "drop",
@@ -41,14 +41,14 @@
     "lint:js": "eslint lib test",
     "lint:typescript": "tslint src/**/*.ts",
     "pretest": "npm-run-all lint build",
-    "test": "npm-run-all unit:* ",
+    "test": "npm-run-all unit:* e2e:*",
     "unit:node": "mocha test/unit/node/**/*.js",
     "unit:browser": "karma start karma.conf.js",
     "e2e:selenium-webdriver": "mocha test/e2e/selenium-webdriver/**/*.js",
     "e2e:nightwatch": "nightwatch --config test/e2e/nightwatch/nightwatch.json",
     "prepublish": "npm-run-all build"
   },
-  "author": "PloughingAByteField",
+  "author": "Kuniwak",
   "license": "MIT",
   "dependencies": {
     "multiline": "^1.0.2"
@@ -58,10 +58,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PloughingAByteField/html-dnd.git"
+    "url": "git+https://github.com/Kuniwak/html-dnd.git"
   },
   "bugs": {
-    "url": "https://github.com/PloughingAByteField/html-dnd/issues"
+    "url": "https://github.com/Kuniwak/html-dnd/issues"
   },
-  "homepage": "https://github.com/PloughingAByteField/html-dnd#readme"
+  "homepage": "https://github.com/Kuniwak/html-dnd#readme"
 }

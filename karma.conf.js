@@ -51,12 +51,11 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: false,
     singleRun: true,
-//    sauceLabs: {
-//      testName: 'html-dnd Unit Tests'
-//    },
-//    customLaunchers: customLaunchers,
-//    browsers: Object.keys(customLaunchers),
-    browsers: ['Chrome'],
-    reporters: ['mocha', 'coverage']
+    sauceLabs: {
+      testName: 'html-dnd Unit Tests'
+    },
+    customLaunchers: customLaunchers,
+    browsers: Object.keys(customLaunchers),
+    reporters: ['mocha', 'coverage', 'saucelabs']
   });
 };
