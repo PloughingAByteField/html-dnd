@@ -2,7 +2,7 @@ namespace dnd {
   "use strict";
 
 
-  export function simulate(draggable: Element, droppable: Element): void {
+  export function simulate(draggable: Element, droppable: Element, offsetX?: number, offsetY?: number): void {
     const store = new DragDataStore();
     // For the dragstart event. New data can be added to the drag data store.
     store.mode = "readwrite";
@@ -16,7 +16,7 @@ namespace dnd {
     // read, including the data. No new data can be added.
     store.mode = "readonly";
 
-    const dragOverEvent = createEventWithDataTransfer("dragover", dataTransfer);
+    const dragOverEvent = createEventWithDataTransfer("dragover", dataTransfer, offsetX, offsetY);
     droppable.dispatchEvent(dragOverEvent);
 
     const dropEvent = createEventWithDataTransfer("drop", dataTransfer);
@@ -35,10 +35,14 @@ namespace dnd {
   /**
    * Creates an event instance with a DataTransfer.
    */
-  function createEventWithDataTransfer(type: string, dataTransfer: DataTransfer): DragEvent {
+  function createEventWithDataTransfer(type: string, dataTransfer: DataTransfer, offsetX?: number, offsetY?: number): DragEvent {
     const event = <any> document.createEvent("CustomEvent");
     event.initCustomEvent(type, true, true, null);
     event.dataTransfer = dataTransfer;
+    if (typeof offsetX !== 'undefined' && typeof offsetX !== 'undefined') {
+        event.offsetX = offsetX;
+        event.offsetY = offsetY;
+    }
     return event;
   }
 

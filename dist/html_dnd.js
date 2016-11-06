@@ -6,7 +6,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var dnd;
 (function (dnd) {
     "use strict";
-    function simulate(draggable, droppable) {
+    function simulate(draggable, droppable, offsetX, offsetY) {
         var store = new DragDataStore();
         // For the dragstart event. New data can be added to the drag data store.
         store.mode = "readwrite";
@@ -16,7 +16,7 @@ var dnd;
         // For the drop event. The list of items representing dragged data can be
         // read, including the data. No new data can be added.
         store.mode = "readonly";
-        var dragOverEvent = createEventWithDataTransfer("dragover", dataTransfer);
+        var dragOverEvent = createEventWithDataTransfer("dragover", dataTransfer, offsetX, offsetY);
         droppable.dispatchEvent(dragOverEvent);
         var dropEvent = createEventWithDataTransfer("drop", dataTransfer);
         droppable.dispatchEvent(dropEvent);
@@ -31,10 +31,14 @@ var dnd;
     /**
      * Creates an event instance with a DataTransfer.
      */
-    function createEventWithDataTransfer(type, dataTransfer) {
+    function createEventWithDataTransfer(type, dataTransfer, offsetX, offsetY) {
         var event = document.createEvent("CustomEvent");
         event.initCustomEvent(type, true, true, null);
         event.dataTransfer = dataTransfer;
+        if (typeof offsetX !== 'undefined' && typeof offsetX !== 'undefined') {
+            event.offsetX = offsetX;
+            event.offsetY = offsetY;
+        }
         return event;
     }
     /**

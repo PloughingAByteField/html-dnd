@@ -12,7 +12,8 @@ This module is like [rcorreia/drag_and_drop_helper.js](https://gist.github.com/r
 
 This fork of [html-dnd](https://github.com/Kuniwak/html-dnd) simply adds a dragover event in front of the drop event to allow the [angular-drag-and-drop-lists](https://github.com/marceljuenemann/angular-drag-and-drop-lists) to work properly.
 This is due to angular-drag-and-drop-lists set index values via the drag over event, if the event is not run then correctly calculate the index of the drop point.
-
+Added optional arguments offsetX and offsetY as angular-drag-and-drop-lists tries to calculate which side of an element to do the drop based on the offsets. 
+By using a small value for each, the drop goes ahead of the element being dropped upon, using large values it goes after the dropped upon element.
 
 Install
 -------
@@ -44,7 +45,15 @@ driver.get('http://example.com');
 var draggable = driver.findElement(By.id('draggable'));
 var droppable = driver.findElement(By.id('droppable'));
 
-driver.executeScript(dragAndDrop, draggable, droppable);
+// drop before droppable
+var offsetX = 1;
+var offsetY = 1;
+
+// drop after droppable
+//var offsetX = 100;
+//var offsetY = 1000;
+//driver.executeScript(dragAndDrop, draggable, droppable);
+driver.executeScript(dragAndDrop, draggable, droppable, offsetX, offsetY);
 
 driver.quit();
 ```
